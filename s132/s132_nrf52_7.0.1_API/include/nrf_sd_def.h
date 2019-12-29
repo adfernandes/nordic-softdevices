@@ -46,10 +46,12 @@
 extern "C" {
 #endif
 
+#define SD_PPI_RESTRICTED               0x00000001uL /**< 1 if PPI peripheral is restricted, 0 otherwise. */
 #define SD_PPI_CHANNELS_USED            0xFFFE0000uL /**< PPI channels utilized by SotfDevice (not available to the application). */
 #define SD_PPI_GROUPS_USED              0x0000000CuL /**< PPI groups utilized by SoftDevice (not available to the application). */
 #define SD_TIMERS_USED                  0x00000001uL /**< Timers used by SoftDevice. */
-#define SD_SWI_USED                     0x0000003CuL /**< Software interrupts used by SoftDevice */
+#define SD_EGUS_USED                    0x00000036uL /**< Software interrupts used by SoftDevice (as per the SoftDevice Specification + errata). */
+#define SD_SWI_USED                     SD_EGUS_USED /**< SWIs and EGUs use the same IRQn, so SD_SWI_USED and SD_EGUS_USED must be identical. */
 
 
 #ifdef __cplusplus
